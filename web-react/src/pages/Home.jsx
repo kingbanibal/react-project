@@ -5,12 +5,9 @@ import Cards from "../Cards";
 
 function Home() {
   return (
-    <div  className="bg-url[(web-react/src/assets/Old_Electronics.webp)]" >
-      <div>
-
-        {/* <img src={Old_Electronics} alt="" /> */}
+    <div>
+      <div class="bg-[url('/src/assets/Old_Electronics.webp')]">
         {" "}
-        <Navbar />
         <h1 className="header">A Tool For Every Workflow</h1>
       </div>
       <div>

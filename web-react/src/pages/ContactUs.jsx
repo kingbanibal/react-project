@@ -5,7 +5,7 @@ function ContactUs() {
 
     const {id} = useParams()
 
-  return <div>contactUs</div>;
+  return <div>contactUs {id}</div>;
 }
 
 export default ContactUs;

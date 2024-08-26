@@ -10,7 +10,8 @@ import ContactUs from "./pages/contactUs";
 
 function App() {
   return (
-    <div>
+    <div className="bg">
+       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<ContactUs />} />

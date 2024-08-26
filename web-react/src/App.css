@@ -61,13 +61,13 @@ img{
   align-items: flex-start;
   justify-content: flex-start;
 }
-.prosec{
+/* .prosec{
   margin-top:50px ;
   display:flex ;
   justify-content: space-around;
   align-items: center;
   justify-content: center;
-}
+} */
 .box{
   align-items: center;
   background: white;

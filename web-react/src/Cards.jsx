@@ -1,37 +1,39 @@
-import headset from "./assets/headset.webp"
-import controller from "./assets/controller.jpg"
+import headset from "./assets/headset.webp";
+import controller from "./assets/controller.jpg";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const Cards = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+       const response = await axios.get("https://dummyjson.com/products");
+       setProducts(response.data.products);
+     }
+    fetchData();
+  }, []); 
+  
   return (
     <div className="middle">
       <div className="prosec">
-        <div className="prosec1">
-          <div className="product box">
-            <img className="headset" src="src/assets/headset.webp" alt="asd" />
-            <h1>HyperX headset</h1>
-            <p>Works With PS4, PS5, XBOX SERIES X, PC</p>
-            <button className="button">Add To Cart</button>
-          </div>
-          <div className="product box">
-            <img className="controller" src="src/assets/controller.jpg" alt="asd" />
-            <h1>PS5 controller</h1>
-            <p>Works With PS4, PS5, XBOX SERIES X, PC</p>
-            <button className="button">Add To Cart</button>
-          </div>
-        </div>
-        <div className="prosec2">
-          <div className="product box">
-            <img className="headset" src="src/assets/headset.webp" alt="asd" />
-            <h1>HyperX headset</h1>
-            <p>Works With PS4, PS5, XBOX SERIES X, PC</p>
-            <button className="button">Add To Cart</button>
-          </div>
-          <div className="product box">
-            <img className="controller" src="src/assets/controller.jpg" alt="asd" />
-            <h1 className="text-red-500">PS5 controller</h1>
-            <p>Works With PS4, PS5, XBOX SERIES X, PC</p>
-            <Link className="button" to="/contact-us"><div className="logo">Shop</div>Add To Cart</Link>
-          </div>
+        <div className="flex flex-wrap justify-center">
+          {products.map((product) => {
+            return (
+              <div className="product box w-72">
+                <img
+                  className="headset"
+                  src={product.thumbnail}
+                  alt="asd"
+                />
+                <h1>{product.title}</h1>
+                <p>{product.description}</p>
+                <Link className="button" to="/contact-us">
+                  Add To Cart
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
