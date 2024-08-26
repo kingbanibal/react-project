@@ -28,7 +28,7 @@ const Cards = () => {
           </div>
           <div className="product box">
             <img className="controller" src="src/assets/controller.jpg" alt="asd" />
-            <h1>PS5 controller</h1>
+            <h1 className="text-red-500">PS5 controller</h1>
             <p>Works With PS4, PS5, XBOX SERIES X, PC</p>
             <Link className="button" to="/contact-us"><div className="logo">Shop</div>Add To Cart</Link>
           </div>
