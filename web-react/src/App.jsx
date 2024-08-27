@@ -9,6 +9,7 @@ import Decorations from "./pages/Decorations";
 import Electronics from "./pages/Electronics";
 import Clothing from "./pages/Clothing";
 import { CartProvider } from "./CartContext";
+import Card from "./pages/Card";
 // import ContactUs from "./pages/contactUs";
 // import ReactDOM from "react";
 
