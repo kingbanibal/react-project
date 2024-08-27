@@ -1,10 +1,4 @@
-/* #root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
- *{
+*{
   margin: 0;
  }
 nav{ 
@@ -14,13 +8,14 @@ nav{
   display: flex;
 }
 ul{
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  
 }
 nav ul li{
   font-size: larger;
   display: inline-flex ;
-  padding: 10px;
+ padding-inline: 5px;
+ padding-top: 10px;
 }
 .menu{
   font-size: xx-large;
@@ -37,37 +32,20 @@ img{
 }
 .header{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-align: center;
-  text-shadow:4px 4px 4px rgb(252, 252, 252);
-  margin-top: 150px;
+  text-shadow:4px 4px 4px rgb(0, 0, 0);
+  margin: 105px;
   font-size: 60px;
 }
-.headset{
-  width:300px;
-  height:auto;
-}
-.prosec1{
+.product{
   margin-top:50px ;
   display:flex ;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.prosec2{
-  margin-top:50px ;
-  display:flex ;
-  justify-content: space-around;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-/* .prosec{
-  margin-top:50px ;
-  display:flex ;
-  justify-content: space-around;
-  align-items: center;
-  justify-content: center;
-} */
 .box{
   align-items: center;
   background: white;
@@ -78,40 +56,3 @@ img{
   text-align: left;
   margin: 15px;
 }
-
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-} */
-/* .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-} */
-
-/* @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */

@@ -1,14 +1,12 @@
 import React from "react";
-import Old_Electronics from "../assets/Old_Electronics.webp";
-import Navbar from "../Navbar";
 import Cards from "../Cards";
 
 function Home() {
   return (
     <div>
-      <div class="bg-[url('/src/assets/Old_Electronics.webp')]">
+      <div>
         {" "}
-        <h1 className="header">A Tool For Every Workflow</h1>
+        <h1 className="header">Everything You Need In One Place</h1>
       </div>
       <div>
         <Cards />
