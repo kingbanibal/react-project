@@ -8,8 +8,8 @@ function Cart() {
 
   return (
     <div className="flex-wrap">
-      <h1>your items</h1>
-      {items && items.map((item) => (
+      <h1 >your items</h1>
+      {items.map((item) => (
         <>
         <div className="product box w-72 ">
         <img className="headset" src={item.thumbnail} alt="asd" />

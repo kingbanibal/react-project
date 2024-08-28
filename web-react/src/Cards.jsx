@@ -30,17 +30,17 @@ const Cards = () => {
                 <br /> 
 
                 <div className="">
-                <button>-</button>
+               
 
                 <button
                   onClick={() => addToCart({thumbnail:product.thumbnail ,title:product.title,description:product.description })}
-                  className=" button text-green-400"
+                  className=" button text-darkblue"
                   to="/your-cart"
                 >
                   Add To Cart
                 </button>
 
-                <button>+</button>
+                
                 
                 </div>
               </div>
