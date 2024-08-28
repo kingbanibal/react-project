@@ -24,7 +24,7 @@ const Cards = () => {
             return (
               <div className="product box w-72 ">
                 <img className="headset" src={product.thumbnail} alt="asd" />
-                <h1 className="text-3xl font-semibold">{product.title}</h1>
+                <h1 className="text-xl md:text-3xl font-semibold">{product.title}</h1>
                 <br />
                 <p className="text-red-900">{product.description}</p>
                 <br /> 

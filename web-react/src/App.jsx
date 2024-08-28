@@ -16,7 +16,7 @@ import Card from "./pages/Card";
 function App() {
   return (
     <CartProvider>
-      <div className="bg-[url('/src/assets/shoping.png')] bg-no-repeat bg-contain">
+      <div className="img bg-[url('/src/assets/shoping.png')] bg-no-repeat bg-contain ">
         <div>
           <Navbar />
         </div>
