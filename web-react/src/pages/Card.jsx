@@ -14,22 +14,20 @@ export default function Card({ thumbnail, title, description }) {
       <br />
 
       <div className="">
-        
         <button
           onClick={() =>
             addToCart({
               thumbnail,
               title,
               description,
+              price,
+              quan
             })
           }
           className=" button text-green-400"
-          to="/your-cart"
         >
           Add To Cart
         </button>
-
-        
       </div>
     </div>
   );

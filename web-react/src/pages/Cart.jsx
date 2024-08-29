@@ -7,37 +7,41 @@ function Cart() {
   const { items } = useContext(CartContext);
 
   return (
-    <div className="flex-wrap">
-      <h1 >your items</h1>
+    <div className=""><h1 className="header2">Your Items</h1> 
+     
+    <div className="flex justify-items-center ">
       {items.map((item) => (
         <>
-        <div className="product box w-72 ">
-        <img className="headset" src={item.thumbnail} alt="asd" />
+        <div className="product box w-72 flex ">
+        <img src={item.thumbnail} alt="asd" />
         <h1 className="text-3xl font-semibold">{item.title}</h1>
         <br />
         <p className="text-red-900">{item.description}</p>
     <br /> 
+    <p className="mt-2">Price: ${item.price} USD</p>
+    <br />
+    <div className="flex content-between">
+    <button className="text-red-600">-
+     
 
-    <div className="">
-    <button>-</button>
-
+    </button>
+<p>0</p>
     <button
       onClick={() => addToCart({
-        thumbnail: item.thumbnail,title: item.title, description: item.description
-      })}
+        thumbnail: item.thumbnail,title: item.title, description: item.description, price: item.price, quantity: item.quantity
+      }
+    )}
       className=" button text-green-400"
-      to="/your-cart"
     >
-      Add To Cart
+      +
     </button>
-
-    <button>+</button>
     
     </div>
   </div>
         </>
       ))}{" "}
     </div>
+    </div> 
   );
 }
 

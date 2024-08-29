@@ -8,10 +8,17 @@ import CartContext from "./CartContext";
 const Cards = () => {
   const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get("https://dummyjson.com/products");
-      setProducts(response.data.products);
+      const productsWithPrices = response.data.products.map((product) => ({
+        ...product,
+        price: (Math.random() * (100 - 10) + 10).toFixed(2),
+        quantity: 0
+      }));
+      console.table(productsWithPrices)
+      setProducts(productsWithPrices);
     }
     fetchData();
   }, []);
@@ -22,27 +29,25 @@ const Cards = () => {
         <div className="flex flex-wrap justify-center">
           {products.map((product) => {
             return (
-              <div className="product box w-72 ">
-                <img className="headset" src={product.thumbnail} alt="asd" />
-                <h1 className="text-xl md:text-3xl font-semibold">{product.title}</h1>
-                <br />
-                <p className="text-red-900">{product.description}</p>
-                <br /> 
-
-                <div className="">
-               
-
+              <div key={product.id} className="product box w-72 p-4 m-4 border rounded-lg shadow-lg">
+                <img className="w-full h-48 object-cover" src={product.thumbnail} alt={product.title} />
+                <h1 className="ch text-xl font-semibold mt-2">{product.title}</h1>
+                <p className="text-red-900 mt-2">{product.description}</p>
+                <p className="mt-2">Price: ${product.price} USD</p>
                 <button
-                  onClick={() => addToCart({thumbnail:product.thumbnail ,title:product.title,description:product.description })}
-                  className=" button text-darkblue"
-                  to="/your-cart"
+                  onClick={() =>
+                    addToCart({
+                      thumbnail: product.thumbnail,
+                      title: product.title,
+                      description: product.description,
+                      price: product.price,
+                      quantity: product.quantity
+                    })
+                  }
+                  className="button bg-blue-500 text-white py-2 px-4 rounded mt-4"
                 >
                   Add To Cart
                 </button>
-
-                
-                
-                </div>
               </div>
             );
           })}
