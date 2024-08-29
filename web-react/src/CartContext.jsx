@@ -9,13 +9,14 @@ export function CartProvider({ children }) {
   console.log(items);
 
   const addToCart = (product) => {
+    const itemExists = items.some(item => item.title === product.title);
     setItems((prevState) => {
       // Check if the item already exists in the cart
-      const itemExists = prevState.some(item => item.title === product.title);
-
       if (itemExists) {
         // If the item exists, return the previous state without adding the new item
-        return prevState;
+        return [
+          ...prevState,
+        ];
       } else {
         // If the item does not exist, add it to the cart
         return [

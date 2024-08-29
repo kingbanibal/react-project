@@ -4,7 +4,7 @@ import { useContext } from "react";
 import CartContext from "../CartContext";
 import Card from "./Card";
 function Cart() {
-  const { items } = useContext(CartContext);
+  const { items,removeFromCart } = useContext(CartContext);
 
   return (
     <div className=""><h1 className="header2">Your Items</h1> 
@@ -37,16 +37,11 @@ function Cart() {
     </button>
     <button
           onClick={() =>
-            removeFromCart({
-              thumbnail,
-              title,
-              description,
-              price,
-              quantity
-            })
+            removeFromCart(item.title)
           }
           className=" button text-green-400"
         >
+          
           remove
         </button>
     </div>
