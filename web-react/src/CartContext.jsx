@@ -31,9 +31,13 @@ export function CartProvider({ children }) {
       }
     });
   };
+  const removeFromCart = (productTitle) => {
+    setItems((prevState) => prevState.filter(item => item.title !== productTitle));
+  };
+
 
   return (
-    <CartContext.Provider value={{ items, addToCart }}>
+    <CartContext.Provider value={{ items, addToCart, removeFromCart}}>
       {children}
     </CartContext.Provider>
   );

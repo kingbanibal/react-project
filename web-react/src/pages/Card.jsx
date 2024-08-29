@@ -21,7 +21,7 @@ export default function Card({ thumbnail, title, description }) {
               title,
               description,
               price,
-              quan
+              quantity
             })
           }
           className=" button text-green-400"

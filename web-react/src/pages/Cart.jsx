@@ -35,7 +35,20 @@ function Cart() {
     >
       +
     </button>
-    
+    <button
+          onClick={() =>
+            removeFromCart({
+              thumbnail,
+              title,
+              description,
+              price,
+              quantity
+            })
+          }
+          className=" button text-green-400"
+        >
+          remove
+        </button>
     </div>
   </div>
         </>
