@@ -36,13 +36,7 @@ const Cards = () => {
                 <p className="mt-2">Price: ${product.price} USD</p>
                 <button
                   onClick={() =>
-                    addToCart({
-                      thumbnail: product.thumbnail,
-                      title: product.title,
-                      description: product.description,
-                      price: product.price,
-                      quantity: product.quantity
-                    })
+                    addToCart(product)
                   }
                   className="button bg-blue-500 text-white py-2 px-4 rounded mt-4"
                 >

@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import CartContext from "../CartContext";
 
-export default function Card({ thumbnail, title, description }) {
+export default function Card(product) {
   const { items } = useContext(CartContext);
 
   return (
@@ -21,7 +21,7 @@ export default function Card({ thumbnail, title, description }) {
               title,
               description,
               price,
-              quantity
+              quantity,
             })
           }
           className=" button text-green-400"

@@ -2,6 +2,8 @@ import { CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { useEffect, useContext } from "react";
+import CartContext from "./Cards";
 
 // useState initializes isOpen to false and provides a function setIsOpen to update it
 // toggleMenu is a function that toggles the value of isOpen
@@ -11,7 +13,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <nav className="bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center p-3">
