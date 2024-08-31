@@ -1,87 +1,80 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+ import { createContext, useEffect, useState } from "react";
 
 
-const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  const [items, setItems] = useState([]);
-  console.log(items);
+ const CartContext = createContext();
 
-  const addToCart = (product) => {
-    const itemExists = items.some(item => item.title === product.title);
-    setItems((prevState) => {
-      // Check if the item already exists in the cart
-      if (itemExists) {
-        // If the item exists, return the previous state without adding the new item
-        return [
-          ...prevState,
-        ];
-      } else {
-        // If the item does not exist, add it to the cart
-        return [
-          ...prevState,
-          {
-            thumbnail: product.thumbnail,
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            quantity: product.quantity
-          },
-        ];
-      }
-    });
-  };
-  const removeFromCart = (productTitle) => {
-    setItems((prevState) => prevState.filter(item => item.title !== productTitle));
-  };
+ export const CartProvider = ({ children }) => {
+   const [items, setItems] = useState([]);
+ 
+   const addToCart = (item) => {
+     setItems((prevItems) => {
+       const existingItem = prevItems.find((i) => i.title === item.title);
+       if (existingItem) {
+         return prevItems.map((i) =>
+           i.title === item.title ? { ...i, quantity: i.quantity + item.quantity } : i
+         );
+       }
+       return [...prevItems, { ...item, quantity: 1 }];
+     });
+   };
+ 
+   const removeFromCart = (title) => {
+     setItems((prevItems) => prevItems.filter((item) => item.title !== title));
+   };
+ 
+   return (
+     <CartContext.Provider value={{ items, addToCart, removeFromCart }}>
+       {children}
+     </CartContext.Provider>
+   );
+ };
 
 
-  return (
-    <CartContext.Provider value={{ items, addToCart, removeFromCart}}>
-      {children}
-    </CartContext.Provider>
-  );
-}
-
-export default CartContext;
 
 
-// createContext is used to create a new context object called CartContext.
-// This context will be used to share data (the cart items) across
-// different components without passing props manually at every level.
+
 // const CartContext = createContext();
 
-// CartProvider is a functional component that will wrap around other components to provide them with access to the cart context.
-// useState is used to create a state variable items and a function setItems to update it. Initially, items is an empty array.
 // export function CartProvider({ children }) {
 //   const [items, setItems] = useState([]);
-//   console.log(items)
-  // addToCart is a function that takes a product object as an argument
-  // It updates the items state by adding the new product to the existing list of items
-  // The new product includes its thumbnail, title, and description
-  // const addToCart = (product) => {
-  //   setItems((prevState) => [
-      
-  //     ...prevState,
-  //     {
-  //       thumbnail: product.thumbnail,
-  //       title: product.title,
-  //       description: product.description,
-  //       price: product.price,
-  //       quantity: product.quantity
-  //     },
-  //   ]);
-  // };
+//   console.log(items);
 
-// The CartProvider component returns a CartContext.Provider component
-// The value prop of the provider is an object containing the items array and the addToCart function
-// {children} represents any child components that will be wrapped by CartProvider. These children will have access to the context values
+//   const addToCart = (product) => {
+//     const itemExists = items.some(item => item.title === product.title);
+//     setItems((prevState) => {
+//       Check if the item already exists in the cart
+//       if (itemExists) {
+//         If the item exists, return the previous state without adding the new item
+//         return [
+//           ...prevState,
+//         ];
+//       } else {
+//         If the item does not exist, add it to the cart
+//         return [
+//           ...prevState,
+//           {
+//             thumbnail: product.thumbnail,
+//             title: product.title,
+//             description: product.description,
+//             price: product.price,
+//             quantity: product.quantity
+//           },
+//         ];
+//       }
+//     });
+//   };
+//   const removeFromCart = (productTitle) => {
+//     setItems((prevState) => prevState.filter(item => item.title !== productTitle));
+//   };
+
+
 //   return (
-//     <CartContext.Provider value={{ items, addToCart }}>
+//     <CartContext.Provider value={{ items, addToCart, removeFromCart}}>
 //       {children}
 //     </CartContext.Provider>
 //   );
 // }
-// CartContext is exported as the default export of the module, making it available for import in other parts of the application
-// export default CartContext;
+
+export default CartContext;
+

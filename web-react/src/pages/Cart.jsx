@@ -1,55 +1,68 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../CartContext";
 import Card from "./Card";
+
 function Cart() {
-  const { items,removeFromCart } = useContext(CartContext);
+  const { items, removeFromCart, addToCart } = useContext(CartContext);
 
+  const totalPrice = items.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
   return (
-    <div className=""><h1 className="header2">Your Items</h1> 
-     
-    <div className="flex justify-items-center ">
-      {items.map((item) => (
-        <>
-        <div className="product box w-72 flex ">
-        <img src={item.thumbnail} alt="asd" />
-        <h1 className="text-3xl font-semibold">{item.title}</h1>
-        <br />
-        <p className="text-red-900">{item.description}</p>
-    <br /> 
-    <p className="mt-2">Price: ${item.price} USD</p>
-    <br />
-    <div className="flex content-between">
-    <button className="text-red-600">-
-     
-
-    </button>
-<p>0</p>
-    <button
-      onClick={() => addToCart({
-        thumbnail: item.thumbnail,title: item.title, description: item.description, price: item.price, quantity: item.quantity
-      }
-    )}
-      className=" button text-green-400"
-    >
-      +
-    </button>
-    <button
-          onClick={() =>
-            removeFromCart(item.title)
-          }
-          className=" button text-green-400"
-        >
-          
-          remove
-        </button>
+    <div className="relative min-h-screen">
+      <h1 className="header2">Your Items</h1>
+      <div className="flex flex-wrap ">
+        {items.map((item) => (
+          <div key={item.title} className="product box w-72 ">
+            <img src={item.thumbnail} alt={item.title} />
+            <div className="ml-4">
+              <h1 className="text-3xl font-semibold">{item.title}</h1>
+              <p className="text-red-900">{item.description}</p>
+              <p className="mt-2">Price: ${item.price} USD</p>
+              <div className="flex items-center mt-2">
+                <button
+                  onClick={() =>
+                    addToCart({ ...item, quantity: item.quantity - 1 })
+                  }
+                  className="text-red-600"
+                >
+                  -
+                </button>
+                <p className="mx-2">{item.quantity}</p>
+                <button
+                  onClick={() =>
+                    addToCart({ ...item, quantity: item.quantity + 1 })
+                  }
+                  className="text-green-400"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => removeFromCart(item.title)}
+                  className="ml-4 text-green-400"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div className="bottom-0 w-full p-4 border-t border-gray-300 bg-white">
+          <h2 className="text-2xl font-semibold">
+            Total Quantity: {totalQuantity}
+          </h2>
+          <h2 className="text-2xl font-semibold">
+            Total Price: ${totalPrice.toFixed(2)} USD
+          </h2>
+          <button className="button bg-blue-500 text-white py-2 px-4 rounded mt-4">
+            Checkout
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-        </>
-      ))}{" "}
-    </div>
-    </div> 
   );
 }
 
